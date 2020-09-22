@@ -1,0 +1,12 @@
+{
+  "name": "Bastex",
+  "version": "1.0.0",
+  "main": "app.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {
+    "electron": "^10.1.2"
+  }
+}
