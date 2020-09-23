@@ -1,4 +1,5 @@
 const { app, BrowserWindow } = require('electron')
+const Papa = require('papaparse')
 
 function createWindow () {
   // Create the browser window.
