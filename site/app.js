@@ -16247,6 +16247,29 @@ return src;
 
 /***/ }),
 
+/***/ "./node_modules/currency.js/dist/currency.min.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/currency.js/dist/currency.min.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/*
+ currency.js - v2.0.3
+ http://scurker.github.io/currency.js
+
+ Copyright (c) 2020 Jason Wilson
+ Released under MIT license
+*/
+(function(e,g){ true?module.exports=g():undefined})(this,function(){function e(b,a){if(!(this instanceof e))return new e(b,a);a=Object.assign({},m,a);var d=Math.pow(10,a.precision);this.intValue=b=g(b,a);this.value=b/d;a.increment=a.increment||1/d;a.groups=a.useVedic?n:p;this.s=a;this.p=d}function g(b,a){var d=2<arguments.length&&void 0!==arguments[2]?arguments[2]:!0;var c=a.decimal;
+var h=a.errorOnInvalid,k=a.fromCents,l=Math.pow(10,a.precision),f=b instanceof e;if(f&&k)return b.intValue;if("number"===typeof b||f)c=f?b.value:b;else if("string"===typeof b)h=new RegExp("[^-\\d"+c+"]","g"),c=new RegExp("\\"+c,"g"),c=(c=b.replace(/\((.*)\)/,"-$1").replace(h,"").replace(c,"."))||0;else{if(h)throw Error("Invalid Input");c=0}k||(c=(c*l).toFixed(4));return d?Math.round(c):c}var m={symbol:"$",separator:",",decimal:".",errorOnInvalid:!1,precision:2,pattern:"!#",negativePattern:"-!#",format:function(b,
+a){var d=a.pattern,c=a.negativePattern,h=a.symbol,k=a.separator,l=a.decimal;a=a.groups;var f=(""+b).replace(/^-/,"").split("."),q=f[0];f=f[1];return(0<=b.value?d:c).replace("!",h).replace("#",q.replace(a,"$1"+k)+(f?l+f:""))},fromCents:!1},p=/(\d)(?=(\d{3})+\b)/g,n=/(\d)(?=(\d\d)+\d\b)/g;e.prototype={add:function(b){var a=this.s,d=this.p;return e((this.intValue+g(b,a))/(a.fromCents?1:d),a)},subtract:function(b){var a=this.s,d=this.p;return e((this.intValue-g(b,a))/(a.fromCents?1:d),a)},multiply:function(b){var a=
+this.s;return e(this.intValue*b/(a.fromCents?1:Math.pow(10,a.precision)),a)},divide:function(b){var a=this.s;return e(this.intValue/g(b,a,!1),a)},distribute:function(b){var a=this.intValue,d=this.p,c=this.s,h=[],k=Math[0<=a?"floor":"ceil"](a/b),l=Math.abs(a-k*b);for(d=c.fromCents?1:d;0!==b;b--){var f=e(k/d,c);0<l--&&(f=f[0<=a?"add":"subtract"](1/d));h.push(f)}return h},dollars:function(){return~~this.value},cents:function(){return~~(this.intValue%this.p)},format:function(b){var a=this.s;return"function"===
+typeof b?b(this,a):a.format(this,Object.assign({},a,b))},toString:function(){var b=this.s,a=b.increment;return(Math.round(this.intValue/this.p/a)*a).toFixed(b.precision)},toJSON:function(){return this.value}};return e});
+
+
+/***/ }),
+
 /***/ "./node_modules/date-fns/esm/_lib/addLeadingZeros/index.js":
 /*!*****************************************************************!*\
   !*** ./node_modules/date-fns/esm/_lib/addLeadingZeros/index.js ***!
@@ -55905,17 +55928,17 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var Chart = __webpack_require__(/*! chart.js */ "./node_modules/chart.js/dist/Chart.js");
 
@@ -55926,31 +55949,46 @@ var Papa = __webpack_require__(/*! papaparse */ "./node_modules/papaparse/papapa
 var _require = __webpack_require__(/*! date-fns */ "./node_modules/date-fns/esm/index.js"),
     subDays = _require.subDays;
 
+var Currency = __webpack_require__(/*! currency.js */ "./node_modules/currency.js/dist/currency.min.js");
+
 var result = Papa.parse('../data/data.csv', {
   download: true,
   header: true,
   skipEmptyLines: true,
   complete: function complete(results, file) {
-    console.log(results);
-    results.data = results.data.filter(function (row) {
-      var _row$Date$split = row.Date.split('/'),
-          _row$Date$split2 = _slicedToArray(_row$Date$split, 3),
-          day = _row$Date$split2[0],
-          month = _row$Date$split2[1],
-          year = _row$Date$split2[2];
+    // combine days
+    data = results.data.reduce(function (carry, row) {
+      var dayTransaction = carry.get(row.Date);
 
-      return new Date(year, month, day) > subDays(new Date(), 1);
+      if (!dayTransaction) {
+        // Date not yet inserted
+        dayTransaction = {
+          Date: row.Date,
+          Amount: Currency(row.Amount).toString()
+        };
+      } else {
+        // Date already exists in carry
+        dayTransaction.Amount = Currency(dayTransaction.Amount).add(row.Amount).toString();
+      }
+
+      carry.set(row.Date, dayTransaction);
+      return carry;
+    }, new Map()); // Convert to array and remove key
+
+    data = _toConsumableArray(data).map(function (row) {
+      return row[1];
     });
-    console.log(results);
+    console.log(data); // Set line graph
+
     var myChart = new Chart.Chart(ctx, {
-      type: "bar",
+      type: "line",
       data: {
-        labels: results.data.map(function (row) {
+        labels: data.map(function (row) {
           return row.Date;
         }),
         datasets: [{
-          label: "# of Votes",
-          data: results.data.map(function (row) {
+          label: "Balance",
+          data: data.map(function (row) {
             return row.Amount;
           }),
           borderWidth: 1
