@@ -3,6 +3,8 @@ var ctx = document.getElementById("myChart");
 const Papa = require('papaparse');
 const {subDays} = require('date-fns');
 const Currency = require('currency.js');
+const Zoom = require('chartjs-plugin-zoom');
+const chartOptions = require('./components/chart-options');
 
 const result = Papa.parse('../data/data.csv', {
     download: true,
@@ -11,6 +13,8 @@ const result = Papa.parse('../data/data.csv', {
     complete: (results, file) => {
       // combine days
       data = results.data.reduce((carry, row) => {
+        const [day, month, year] = row.Date.split('/');
+        row.Date = `${year}-${month}-${day}`;
         let dayTransaction = carry.get(row.Date);
         if (!dayTransaction) {
           // Date not yet inserted
@@ -49,9 +53,7 @@ const result = Papa.parse('../data/data.csv', {
             },
           ],
         },
-        options: {
-          responsive: true,
-        },
+        options: chartOptions,
       });
     },
 })
