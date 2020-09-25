@@ -6,13 +6,14 @@ module.exports = {
         ticks: {
           beginAtZero: true,
           min: -20,
-          max: 20
+          max: 20,
         },
       },
     ],
     xAxes: [
       {
         type: "time",
+        min: "2018-03-18"
       },
     ],
   },
@@ -31,7 +32,7 @@ module.exports = {
 
         // Enable drag-to-zoom behavior
         drag: false,
-        mode: "x",
+        mode: "y",
 
         // Speed of zoom via mouse wheel
         // (percentage of zoom on a wheel event)

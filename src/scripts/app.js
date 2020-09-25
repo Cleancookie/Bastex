@@ -34,7 +34,7 @@ const result = Papa.parse('../data/data.csv', {
       // Convert to array and remove key
       data = [...data].map((row) => {return row[1]});
 
-      console.log(data);
+      let totalBalance = 0;
 
       // Set line graph
       let myChart = new Chart.Chart(ctx, {
@@ -47,7 +47,9 @@ const result = Papa.parse('../data/data.csv', {
             {
               label: "Balance",
               data: data.map((row) => {
-                return row.Amount;
+                console.log(totalBalance);
+                totalBalance = Currency(row.Amount).add(totalBalance).toString();
+                return totalBalance;
               }),
               borderWidth: 1,
             },

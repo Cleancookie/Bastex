@@ -59398,7 +59398,7 @@ var result = Papa.parse('../data/data.csv', {
     data = _toConsumableArray(data).map(function (row) {
       return row[1];
     });
-    console.log(data); // Set line graph
+    var totalBalance = 0; // Set line graph
 
     var myChart = new Chart.Chart(ctx, {
       type: "line",
@@ -59409,7 +59409,9 @@ var result = Papa.parse('../data/data.csv', {
         datasets: [{
           label: "Balance",
           data: data.map(function (row) {
-            return row.Amount;
+            console.log(totalBalance);
+            totalBalance = Currency(row.Amount).add(totalBalance).toString();
+            return totalBalance;
           }),
           borderWidth: 1
         }]
@@ -59439,7 +59441,8 @@ module.exports = {
       }
     }],
     xAxes: [{
-      type: "time"
+      type: "time",
+      min: "2018-03-18"
     }]
   },
   plugins: {
@@ -59455,7 +59458,7 @@ module.exports = {
         enabled: true,
         // Enable drag-to-zoom behavior
         drag: false,
-        mode: "x",
+        mode: "y",
         // Speed of zoom via mouse wheel
         // (percentage of zoom on a wheel event)
         speed: 0.1,
