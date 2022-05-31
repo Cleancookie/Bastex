@@ -25,4 +25,7 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::get('stats', [\App\Http\Controllers\StatsController::class, 'index'])->name('stats.index');
+    Route::get('stats/by-category', [\App\Http\Controllers\StatsController::class, 'category'])->name('stats.category');
 });
